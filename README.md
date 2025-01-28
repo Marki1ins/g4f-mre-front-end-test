@@ -115,9 +115,9 @@ Este comando irá executar os testes automatizados configurados no projeto, gara
 │   ├── modules/          # Módulos específicos por página
 │   │   ├── pages/        # Páginas da aplicação
 │   │   │   └── list/     # Cada pasta tem index.tsx, index.css e subcomponentes
-├── routes/               # Configuração de rotas
-├── services/             # Serviços de integração com API
-├── tests/                # Testes automatizados
+│   ├── routes/           # Configuração de rotas
+│   ├── services/         # Serviços de integração com API
+│   ├── tests/            # Testes automatizados
 ├── .dockerignore         # Ignorar arquivos/pastas no contexto do Docker
 ├── docker-compose.yml    # Configuração de serviços Docker
 ├── .env                  # Variáveis de ambiente
