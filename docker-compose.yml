@@ -9,6 +9,7 @@ services:
       - "4173:4173"
     environment:
       - VITE_API_URL=http://backend:5000
+      - VITE_BRASIL_API_URL=https://viacep.com.br
     depends_on:
       - backend
 
