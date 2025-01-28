@@ -1,4 +1,3 @@
-
 # Frontend - React + Vite + TypeScript + Docker
 
 Este é o projeto frontend, desenvolvido com **React**, **Vite** e **TypeScript**, e empacotado com **Docker** para garantir um ambiente consistente. O backend utiliza **json-server** para simular uma API RESTful.
@@ -44,6 +43,7 @@ Crie um arquivo `.env` na raiz do projeto com as variáveis de ambiente necessá
 
 ```env
 VITE_API_URL=http://localhost:5000
+VITE_BRASIL_API_URL=https://viacep.com.br
 ```
 
 A variável `VITE_API_URL` será usada para configurar a URL da API do backend no frontend.
@@ -68,33 +68,37 @@ Acesse o frontend no navegador em `http://localhost:4173` e a API do backend est
 
 Se você preferir rodar o projeto localmente sem Docker, pode usar os seguintes scripts:
 
-### Rodando o frontend localmente
+### Rodando o frontend e o backend localmente
 
-Para rodar o frontend localmente usando Vite, execute:
-
-```bash
-npm install
-npm run dev:frontend
-```
-
-O Vite será iniciado na porta `4173` (padrão), e você poderá acessar o frontend via `http://localhost:4173`.
-
-### Rodando o backend (json-server) localmente
-
-Para rodar o backend localmente com json-server, execute:
+Para rodar o frontend e o backend localmente execute:
 
 ```bash
 npm install
-npm run dev:backend
+npm run dev
 ```
 
 A API estará disponível em `http://localhost:5000`.
+O Vite será iniciado na porta `4173` (padrão), e você poderá acessar o frontend via `http://localhost:4173`.
+
+---
+
+## Testes
+
+### Rodando os testes
+
+Para executar os testes, utilize o seguinte comando:
+
+```bash
+npm run test
+```
+
+Este comando irá executar os testes automatizados configurados no projeto, garantindo que o comportamento esperado do sistema seja validado.
 
 ---
 
 ## Estrutura de Pastas
 
-```plaintextd q q
+```plaintext
 ├── docker/
 │   ├── frontend/         # Dockerfile do frontend
 │   │   └── Dockerfile
@@ -104,11 +108,34 @@ A API estará disponível em `http://localhost:5000`.
 ├── server/
 │   └── db.json           # Banco de dados do json-server
 ├── src/                  # Código-fonte do frontend
+│   ├── components/       # Componentes reutilizáveis
+│   │   └── folder/       # Cada pasta tem index.tsx e index.css
+│   ├── layouts/          # Layouts reutilizáveis
+│   │   └── folder/       # Cada pasta tem index.tsx e index.css
+│   ├── modules/          # Módulos específicos por página
+│   │   ├── pages/        # Páginas da aplicação
+│   │   │   └── list/     # Cada pasta tem index.tsx, index.css e subcomponentes
+├── routes/               # Configuração de rotas
+├── services/             # Serviços de integração com API
+├── tests/                # Testes automatizados
 ├── .dockerignore         # Ignorar arquivos/pastas no contexto do Docker
 ├── docker-compose.yml    # Configuração de serviços Docker
 ├── .env                  # Variáveis de ambiente
 └── package.json          # Dependências e scripts
 ```
+
+---
+
+## Estrutura Modular
+
+Adotamos uma estrutura de pastas organizada, onde cada funcionalidade ou parte da interface é isolada dentro de sua própria pasta. Dentro de cada pasta, utilizamos os arquivos `index.tsx` e `index.css` para concentrar a implementação de código e estilo relacionados. Essa abordagem proporciona:
+
+1. **Clareza e Organização**: Facilita a localização de arquivos específicos relacionados a um componente ou módulo.
+2. **Reutilização**: Componentes e estilos podem ser reutilizados de forma consistente em toda a aplicação.
+3. **Escalabilidade**: Simplifica a manutenção e expansão do projeto à medida que novas funcionalidades são adicionadas.
+4. **Isolamento de Estilos**: Garante que os estilos de um componente não interfiram em outros, evitando conflitos.
+
+Por exemplo, na pasta `src/modules/pages/list/`, você encontrará um componente principal (`index.tsx`) e seus estilos correspondentes (`index.css`), além de uma subpasta para subcomponentes relacionados. Essa abordagem modular reflete boas práticas de desenvolvimento e organização de código.
 
 ---
 
@@ -127,18 +154,6 @@ O **json-server** é uma ferramenta que cria uma API RESTful simples a partir de
 ### Frontend (React + Vite)
 
 O **Vite** é usado para desenvolver e servir o frontend de maneira rápida e eficiente. As requisições do frontend são feitas para o backend através da URL configurada na variável de ambiente `VITE_API_URL`.
-
----
-
-## Testes
-
-Testes automatizados podem ser executados no frontend e no backend. Caso queira adicionar testes, siga os exemplos de frameworks como Jest ou Testing Library no frontend e Mocha ou Chai no backend.
-
----
-
-## Dockerfile
-
-O **Dockerfile** do frontend está localizado na raíz do projeto. Ele define como construir a imagem do frontend usando a base do Node.js e o Vite.
 
 ---
 
