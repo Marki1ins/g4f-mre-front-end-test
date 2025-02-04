@@ -70,10 +70,9 @@ Se você preferir rodar o projeto localmente sem Docker, pode usar os seguintes 
 
 ### Rodando o frontend e o backend localmente
 
-Para rodar o frontend e o backend localmente execute:
+Para rodar o frontend e o backend localmente, o seu node precisa está na versão `22.13.1`. Então, execute:
 
 ```bash
-node -v 22.13.1
 npm install
 npm run dev
 ```
