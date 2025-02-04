@@ -73,12 +73,13 @@ Se você preferir rodar o projeto localmente sem Docker, pode usar os seguintes 
 Para rodar o frontend e o backend localmente execute:
 
 ```bash
+node -v 22.13.1
 npm install
 npm run dev
 ```
 
 A API estará disponível em `http://localhost:5000`.
-O Vite será iniciado na porta `4173` (padrão), e você poderá acessar o frontend via `http://localhost:4173`.
+O Vite será iniciado na porta `4173`, e você poderá acessar o frontend via `http://localhost:4173`.
 
 ---
 
